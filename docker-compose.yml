@@ -1,0 +1,17 @@
+version: "2"
+services:
+  app:
+    container_name: app
+    restart: always
+    build: api/
+    ports:
+      - "8080:8080"
+    links:
+      - mongodb
+  mongodb:
+    container_name: mongodb
+    image: mongo
+    volumes:
+      - ./datadb:/data/db
+    ports:
+      - "27017:27017"
