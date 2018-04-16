@@ -38,3 +38,12 @@ E.g. `5ad51f069db38e7c8e791f11` turns into `5ad51f06-9db38e-7c8e-791f11`:
 - 3 bytes = counter
 
 > ObjectID is how MongoDB creates id by default, but value of `_id` property can be *anything*, e.g. `123`, this is still perfectly legal.
+
+## Destructuring
+
+Destructuring is a way to pull out properties of object turning them into variables.
+
+```javascript
+let user = { id: 123, name: 'Sergey' };
+let { name } = user;
+```
