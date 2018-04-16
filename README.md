@@ -28,4 +28,13 @@ Some additional documentation is [available on site](http://mongodb.github.io/no
 npm install mongodb@2.2.5 --save
 ```
 
+## ObjectID
 
+E.g. `5ad51f069db38e7c8e791f11` turns into `5ad51f06-9db38e-7c8e-791f11`:
+
+- 4 bytes = time stamp
+- 3 bytes = machine identifier
+- 2 bytes = process identifier
+- 3 bytes = counter
+
+> ObjectID is how MongoDB creates id by default, but value of `_id` property can be *anything*, e.g. `123`, this is still perfectly legal.
