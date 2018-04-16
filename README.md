@@ -15,3 +15,17 @@ During first run it will take time to fetch images, but afterwards building will
 ```shell
 docker-compose build
 ``` 
+
+## Connecting to Mongo
+
+Will be using [Mongo native driver](https://github.com/mongodb/node-mongodb-native).
+
+Some additional documentation is [available on site](http://mongodb.github.io/node-mongodb-native/), as well as [detailed API description](http://mongodb.github.io/node-mongodb-native/3.0/api/).
+
+### Install Mongo
+
+```shell
+npm install mongodb@2.2.5 --save
+```
+
+
