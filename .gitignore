@@ -4,7 +4,7 @@
 .idea/misc.xml
 .idea/modules.xml
 .idea/vcs.xml
-.idea/project-learn-nodejs-api.iml
+.idea/*.iml
 
 # User-specific stuff
 .idea/**/workspace.xml
