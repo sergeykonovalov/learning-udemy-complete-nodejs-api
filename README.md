@@ -60,3 +60,11 @@ let { name } = user;
 - Method `.toArray()` of cursor returns a promise.
 - Note use of `new ObjectID('id')`, not just ID as string.
 - Method `.count()` returns number of records found.
+
+## Deleting from Database
+
+`CommandResult` object has property `.result` which is also object with properties:
+- `ok` (things go as expected if == 1)
+- `n` (number of records affected; will be 0 if none affected)
+
+Method `.deleteOne` works exactly as `.deleteMany` but only deletes first element, then stops.
