@@ -53,3 +53,10 @@ Destructuring is a way to pull out properties of object turning them into variab
 let user = { id: 123, name: 'Sergey' };
 let { name } = user;
 ```
+
+## Reading from Database
+
+- Method `.find()` returns MongoDB cursor.
+- Method `.toArray()` of cursor returns a promise.
+- Note use of `new ObjectID('id')`, not just ID as string.
+- Method `.count()` returns number of records found.
