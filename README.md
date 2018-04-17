@@ -28,6 +28,12 @@ Some additional documentation is [available on site](http://mongodb.github.io/no
 npm install mongodb@2.2.5 --save
 ```
 
+To run a separate Docker container with MongoDB:
+
+```shell
+docker run --name local-mongo -p 27017:27017 -v mongodata:/data/db -d mongo
+```
+
 ## ObjectID
 
 E.g. `5ad51f069db38e7c8e791f11` turns into `5ad51f06-9db38e-7c8e-791f11`:
