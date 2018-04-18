@@ -99,3 +99,6 @@ Note: if you provide number instead of string, it still will work (but Mongoose 
 ```shell
 npm i body-parser@1.15.2 --save
 ```
+
+> Complete list of statuses can find at www.httpstatuses.com.
+

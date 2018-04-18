@@ -1,8 +1,13 @@
 const express = require('express');
-const app = express();
+const bodyParser = require('body-parser');
+
 let { mongoose } = require('./db/mongoose');
 let { Todo } = require('./models/todo');
 let { User } = require('./models/user');
+
+const app = express();
+
+app.use(bodyParser.json());
 
 let newUser = new User({
     email: "somebody@example.com"
@@ -14,22 +19,22 @@ newUser.save().then((doc) => {
     console.log(error);
 });
 
-let newTodo = new Todo({
-    text: "Cook dinner",
-    completed: true,
-    completedAt: 31081982
+app.post('/todos', (req, res) => {
+    let newTodo = new Todo({
+        text: req.body.text,
+        completed: true
+    });
+    newTodo.save().then((doc) => {
+        res.send(doc);
+    }, (error) => {
+        res.status(400).send(error);
+    });
 });
 
-newTodo.save().then((doc) => {
-    console.log('Saved Todo', doc);
-}, (error) => {
-    console.log('Unable to save Todo', error)
-});
-
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
     res.send('Hello world');
 });
 
-app.listen(8080, function() {
+app.listen(8080, () => {
     console.log('Express server application started.');
 });
