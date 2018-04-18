@@ -85,3 +85,9 @@ npm i mongoose@4.5.9 --save
 ```
 
 Mongoose manages connection, so developer does not need to worry about it.
+
+### Validators
+
+> More information about validation available in [official documentation](http://mongoosejs.com/docs/validation.html) and on page related to [schemas](http://mongoosejs.com/docs/guide.html).
+
+Note: if you provide number instead of string, it still will work (but Mongoose will cast it to string); but will fail if you try to provide an object.
