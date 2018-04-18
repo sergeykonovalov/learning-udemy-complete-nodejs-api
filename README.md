@@ -91,3 +91,11 @@ Mongoose manages connection, so developer does not need to worry about it.
 > More information about validation available in [official documentation](http://mongoosejs.com/docs/validation.html) and on page related to [schemas](http://mongoosejs.com/docs/guide.html).
 
 Note: if you provide number instead of string, it still will work (but Mongoose will cast it to string); but will fail if you try to provide an object.
+
+## Building REST API
+
+> Install `body-parser` to parse HTML body into object.
+
+```shell
+npm i body-parser@1.15.2 --save
+```
