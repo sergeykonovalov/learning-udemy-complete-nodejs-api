@@ -54,14 +54,14 @@ let user = { id: 123, name: 'Sergey' };
 let { name } = user;
 ```
 
-## Reading from Database
+### Reading from Database
 
 - Method `.find()` returns MongoDB cursor.
 - Method `.toArray()` of cursor returns a promise.
 - Note use of `new ObjectID('id')`, not just ID as string.
 - Method `.count()` returns number of records found.
 
-## Deleting from Database
+### Deleting from Database
 
 `CommandResult` object has property `.result` which is also object with properties:
 - `ok` (things go as expected if == 1)
@@ -69,7 +69,19 @@ let { name } = user;
 
 Method `.deleteOne` works exactly as `.deleteMany` but only deletes first element, then stops.
 
-## Updating Database
+### Updating Database
 
 Method `.findOneAndUpdate` returns Promise if no callback sent.
 > Additional information on method available in [official documentation](https://docs.mongodb.com/manual/reference/method/db.collection.findOneAndUpdate/).
+
+## Mongoose
+
+> [www.mongoosejs.com](www.mongoosejs.com)
+
+### Installation
+
+```shell
+npm i mongoose@4.5.9 --save
+```
+
+Mongoose manages connection, so developer does not need to worry about it.
