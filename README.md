@@ -68,3 +68,8 @@ let { name } = user;
 - `n` (number of records affected; will be 0 if none affected)
 
 Method `.deleteOne` works exactly as `.deleteMany` but only deletes first element, then stops.
+
+## Updating Database
+
+Method `.findOneAndUpdate` returns Promise if no callback sent.
+> Additional information on method available in [official documentation](https://docs.mongodb.com/manual/reference/method/db.collection.findOneAndUpdate/).
