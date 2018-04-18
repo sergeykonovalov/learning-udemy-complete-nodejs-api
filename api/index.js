@@ -1,35 +1,8 @@
 const express = require('express');
 const app = express();
-const mongoose = require('mongoose');
-
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/TodoApp');
-
-let Todo = mongoose.model('Todo', {
-    text: {
-        type: String,
-        required: true,
-        minlength: 1,
-        trim: true
-    },
-    completed: {
-        type: Boolean,
-        default: false
-    },
-    completedAt: {
-        type: Number,
-        default: null
-    }
-});
-
-let User = mongoose.model('User', {
-    email: {
-        type: String,
-        minlength: 1,
-        required: true,
-        trim: true
-    }
-});
+let { mongoose } = require('./db/mongoose');
+let { Todo } = require('./models/todo');
+let { User } = require('./models/user');
 
 let newUser = new User({
     email: "somebody@example.com"
