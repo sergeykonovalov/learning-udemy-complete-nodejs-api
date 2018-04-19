@@ -113,3 +113,5 @@ npm i expect@1.20.2 mocha@3.0.2 nodemon@1.10.2 supertest@2.0.0 --save-dev
 Note that unlike before passing `done` as argument to `.end`, we pass a function, which includes error and response.
 
 Run suite with `npm run test-watch`.
+
+> QUESTION: When I have two it() tests are they async? Will they be executed one after another in order?
