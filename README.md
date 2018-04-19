@@ -102,3 +102,10 @@ npm i body-parser@1.15.2 --save
 
 > Complete list of statuses can find at www.httpstatuses.com.
 
+### Test Suite for API
+
+Install `expect` for assertions and `mocha` for test suite, `supertest` to test our Express routes and `nodemon`.
+
+```shell
+npm i expect@1.20.2 mocha@3.0.2 nodemon@1.10.2 supertest@2.0.0 --save-dev
+```
