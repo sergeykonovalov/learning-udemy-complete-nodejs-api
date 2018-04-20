@@ -14,7 +14,7 @@ During first run it will take time to fetch images, but afterwards building will
 
 ```shell
 docker-compose build
-``` 
+```
 
 ## Connecting to Mongo
 
@@ -44,6 +44,8 @@ E.g. `5ad51f069db38e7c8e791f11` turns into `5ad51f06-9db38e-7c8e-791f11`:
 - 3 bytes = counter
 
 > ObjectID is how MongoDB creates id by default, but value of `_id` property can be *anything*, e.g. `123`, this is still perfectly legal.
+
+> Note that Mongoose can accept just string of ObjectID and convert it for you.
 
 ## Destructuring
 
