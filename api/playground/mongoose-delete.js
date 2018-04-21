@@ -11,6 +11,7 @@ Todo.findOneAndRemove.({}).then((result) => {
   console.log(result);
 });
 
+// If nothing is deleted, will return null
 Todo.findByIdAndRemove(id).then((todo) => {
   console.log(result);
 });
