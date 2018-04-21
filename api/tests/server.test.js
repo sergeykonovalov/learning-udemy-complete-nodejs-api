@@ -4,12 +4,16 @@ const request = require('supertest');
 
 const { app } = require('./../index');
 const { Todo } = require('./../models/todo');
+const { ObjectID } = require('mongodb');
 
 let todos = [{
+    _id: new ObjectID(),
     text: 'first test todo'
 }, {
+    _id: new ObjectID(),
     text: 'second test todo'
 }, {
+    _id: new ObjectID(),
     text: 'third test todo'
 }];
 
@@ -68,4 +72,30 @@ describe('GET /todos', () => {
            .end(done);
         // ^^^  no need to do anything here, as we are not doing anything asynchronously
    });
+});
+
+describe('GET /todos/:id', () => {
+  it('should return todo doc', (done) => {
+    request(app)
+      .get(`/todos/${todos[0]._id.toHexString()}`)
+      .expect(200)
+      .expect((res) => {
+        expect(res.body.todo.text).toBe(todos[0].text);
+      })
+      .end(done);
+  });
+  it('should return 400 for invalid id', (done) => {
+    let invalidId = '12345';
+    request(app)
+      .get(`/todos/${invalidId}`)
+      .expect(400)
+      .end(done);
+  });
+  it('should return 404 if no record found', (done) => {
+    let randomObjectId = new ObjectID().toHexString();
+    request(app)
+      .get(`/todos/${randomObjectId}`)
+      .expect(404)
+      .end(done);
+  });
 });

@@ -10,15 +10,15 @@ const app = express();
 
 app.use(bodyParser.json());
 
-let newUser = new User({
-    email: "somebody@example.com"
-});
-
-newUser.save().then((doc) => {
-    console.log(doc);
-}, (error) => {
-    console.log(error);
-});
+// let newUser = new User({
+//     email: "somebody@example.com"
+// });
+//
+// newUser.save().then((doc) => {
+//     console.log(doc);
+// }, (error) => {
+//     console.log(error);
+// });
 
 app.post('/todos', (req, res) => {
     let newTodo = new Todo({
@@ -43,7 +43,7 @@ app.get('/todos', (req, res) => {
 app.get('/todos/:id', (req, res) => {
   let todoId = req.params.id;
   if (!ObjectID.isValid(todoId)) {
-    res.status(404).send({ responseText: `Bad ID ${todoId} provided`});
+    res.status(400).send({ responseText: `Bad ID ${todoId} provided`});
   }
   Todo.findById(todoId).then((todo) => {
     if (!todo) {

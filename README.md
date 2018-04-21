@@ -119,3 +119,10 @@ Run suite with `npm run test-watch`.
 To start monitoring changes run `nodemon index.js`.
 
 > QUESTION: When I have two it() tests are they async? Will they be executed one after another in order?
+
+> QUESTION: Why we write like that, why not avoid wrapper for res?
+```javascript
+.expect((res) => {
+  expect(res.body.todo.text).toBe(todos[0].text);
+})
+```
