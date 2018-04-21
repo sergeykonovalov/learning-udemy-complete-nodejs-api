@@ -59,6 +59,24 @@ app.get('/', (req, res) => {
     res.send('Hello world');
 });
 
+app.delete('/todos/:id', (req, res) => {
+  let todoId = req.params.id;
+  if (!ObjectID.isValid(todoId)) {
+    res.status(400).send({ responseText: `Bad ID ${todoId} provided`});
+  }
+  Todo.findByIdAndRemove(todoId).then((doc) => {
+    if (!doc) {
+      res.status(404).send();
+    } else {
+    res.status(200).send(doc);
+    }
+  }, (e) => {
+    res.status(400).send();
+  }).catch((e) => {
+    res.status(400).send();
+  });
+});
+
 app.listen(8080, () => {
     console.log('Express server application started.');
 });
