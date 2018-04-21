@@ -136,3 +136,13 @@ To generate random records in database, use `faker` package:
 ```shell
 npm i faker --save
 ```
+
+> TODO: Resolve UnhandledPromiseRejectionWarning when running tests.
+
+### Updating Records
+
+#### Install Lodash
+
+```shell
+npm i lodash@4.15.0 --save
+```
