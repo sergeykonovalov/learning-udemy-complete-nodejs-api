@@ -124,9 +124,17 @@ describe('DELETE /todos/:id', () => {
       })
   });
   it('should return 404 if todo not found', (done) => {
-    done();
+    let randomId = new ObjectID().toHexString();
+    request(app)
+    .delete(`/todos/${randomId}`)
+    .expect(404)
+    .end(done);
   });
-  it('should return 404 if id is invalid', (done) => {
-    done();
+  it('should return 400 if id is invalid', (done) => {
+    let invalidId = '123';
+    request(app)
+    .delete(`/todos/${invalidId}`)
+    .expect(400)
+    .end(done);
   });
 });
