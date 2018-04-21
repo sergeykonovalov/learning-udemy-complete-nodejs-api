@@ -126,3 +126,13 @@ To start monitoring changes run `nodemon index.js`.
   expect(res.body.todo.text).toBe(todos[0].text);
 })
 ```
+
+### Removing Records in DB
+
+Note, that it is possible to remove all records by running `Model.remove({})`.
+
+To generate random records in database, use `faker` package:
+
+```shell
+npm i faker --save
+```
