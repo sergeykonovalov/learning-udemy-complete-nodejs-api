@@ -116,4 +116,6 @@ Note that unlike before passing `done` as argument to `.end`, we pass a function
 
 Run suite with `npm run test-watch`.
 
+To start monitoring changes run `nodemon index.js`.
+
 > QUESTION: When I have two it() tests are they async? Will they be executed one after another in order?
