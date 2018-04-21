@@ -79,7 +79,7 @@ app.delete('/todos/:id', (req, res) => {
 });
 
 app.patch('/todos/:id', (req, res) => {
-  let id = req.params.id;
+  let todoId = req.params.id;
   let body = _.pick(req.body, ['text', 'completed']);
   if (!ObjectID.isValid(todoId)) {
     res.status(400).send({ responseText: `Bad ID ${todoId} provided`});
@@ -90,7 +90,7 @@ app.patch('/todos/:id', (req, res) => {
     body.completed = false;
     body.completedAt = null;
   }
-  Todo.findByIdAndUpdate(id, { $set: body }, { new: true }).then((todo) => {
+  Todo.findByIdAndUpdate(todoId, { $set: body }, { new: true }).then((todo) => {
     if (!todo) {
       res.status(404).send();
     }
