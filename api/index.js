@@ -64,11 +64,11 @@ app.delete('/todos/:id', (req, res) => {
   if (!ObjectID.isValid(todoId)) {
     res.status(400).send({ responseText: `Bad ID ${todoId} provided`});
   }
-  Todo.findByIdAndRemove(todoId).then((doc) => {
-    if (!doc) {
+  Todo.findByIdAndRemove(todoId).then((todo) => {
+    if (!todo) {
       res.status(404).send();
     } else {
-    res.status(200).send({ doc });
+    res.status(200).send({ todo });
     }
   }, (e) => {
     res.status(400).send();
