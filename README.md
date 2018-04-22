@@ -147,5 +147,5 @@ npm i faker --save
 #### Install Lodash
 
 ```shell
-npm i lodash@4.15.0 --save
+npm i lodash --save
 ```
