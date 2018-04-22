@@ -1,3 +1,4 @@
+require('./config/config');
 const _ = require('lodash');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -100,7 +101,7 @@ app.patch('/todos/:id', (req, res) => {
   });
 });
 
-app.listen(8080, () => {
+app.listen(process.env.PORT = 3000, () => {
     console.log('Express server application started.');
 });
 
