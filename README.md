@@ -196,3 +196,7 @@ npm install jsonwebtoken@7.1.9 --save
   Note that `jwt.verify()` will throw an exception "JsonWebTokenError: invalid signature" if token is not valid.
 
   > QUESTION: What if secret key compromised? What are next steps? Invalidate all tokens? 
+
+  ### Generating Tokens and Setting Headers
+
+  Note we will use model methods (`User`) and instance methods (`user.generateAuthToken`).
