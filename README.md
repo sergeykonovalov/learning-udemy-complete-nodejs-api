@@ -157,3 +157,11 @@ npm i lodash --save
 ```shell
 npm install validator@5.6.0 --save
 ```
+
+## Authentication
+
+To use encrtypton algorithms, we need to install module:
+
+```shell
+npm install crypto-js@3.1.6 --save
+```
