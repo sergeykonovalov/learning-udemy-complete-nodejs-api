@@ -13,6 +13,9 @@ let token = {
     hash: SHA256(JSON.stringify(data) + 'some secret salt').toString()
 };
 
+token.data.id = 5;
+token.hash = SHA256(JSON.stringify(data)).toString();
+
 let resultHash = SHA256(JSON.stringify(token.data) + 'some secret salt').toString();
 
 if (resultHash === token.hash) {
