@@ -102,7 +102,7 @@ app.patch('/todos/:id', (req, res) => {
 });
 
 app.post('/users', (req, res) => {
-  let requestBody = _.pick(req.body, ['email', 'password']);
+  let requestBody = _.pick(req.body, ['email', 'password']); // only work with properties we want, not all sent by user
   let newUser = new User(requestBody);
   newUser.save().then((user) => {
     res.send({ user });
