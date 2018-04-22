@@ -149,3 +149,7 @@ npm i faker --save
 ```shell
 npm i lodash --save
 ```
+
+## Validation of Model Properties
+
+> Refer to [official Mongoose validation page](http://mongoosejs.com/docs/validation.html).
