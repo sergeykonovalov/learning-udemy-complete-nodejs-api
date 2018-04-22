@@ -104,18 +104,24 @@ app.patch('/todos/:id', (req, res) => {
 app.post('/users', (req, res) => {
   let requestBody = _.pick(req.body, ['email', 'password']); // only work with properties we want, not all sent by user
   let newUser = new User(requestBody);
+  
   newUser.save().then((user) => {
-    res.send({ user });
-  }, (error) => {
-    if (error.code == '11000') { // attempt to add duplicadte
-      return res.status(409).send(); // send 409 code and stop execution
+    return user.generateAuthToken();
+  }).then((token) => {
+    console.log('=== APP - Received Token ===\n', token);
+    console.log('=== APP - User Model Now ===\n', newUser);
+    res.header('x-auth', token).send(newUser);
+  }).catch((e) => {
+    console.log('=== APP - Error Triggered ===\n', e);
+    if (e.code === 11000) {
+      res.status(409).send({ message: 'Conflict of data' });
     }
-    res.status(400).send({ error });
+    res.status(400).send(e);
   });
 });
 
 app.listen(process.env.PORT = 3000, () => {
-    console.log('Express server application started.');
+    console.log(`Express server application started on port ${process.env.PORT}`);
 });
 
 module.exports = { app };
