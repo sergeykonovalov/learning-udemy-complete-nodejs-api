@@ -101,6 +101,19 @@ app.patch('/todos/:id', (req, res) => {
   });
 });
 
+app.post('/users', (req, res) => {
+  let requestBody = _.pick(req.body, ['email', 'password']);
+  let newUser = new User(requestBody);
+  newUser.save().then((user) => {
+    res.send({ user });
+  }, (error) => {
+    if (error.code == '11000') { // attempt to add duplicadte
+      return res.status(409).send(); // send 409 code and stop execution
+    }
+    res.status(400).send({ error });
+  });
+});
+
 app.listen(process.env.PORT = 3000, () => {
     console.log('Express server application started.');
 });
