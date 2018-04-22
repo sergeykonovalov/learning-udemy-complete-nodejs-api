@@ -171,3 +171,24 @@ Crypto-JS used for learning purposes, while in production we will be using anoth
 ```shell
 npm install jsonwebtoken@7.1.9 --save
 ```
+
+### How Web Token Works
+
+> Defined by RFC 7519.
+
+- JWT structure is simple: header.payload.signature
+- User authenticates at service and gets JWT back
+  - Header includes type (`typ`) and algorithm (`alg`)
+  - Payload might be any data, e.g. user ID (each property in payload called a claim); typical types of claims are `iss` for issuer, `sub` for subject, and `exp` for expiration time (must be after current time), `jti` for unique identifier (for one-time tokens), `iat` time stamp when token issued, `nbf` earliest time when token can be accepted, 
+    - Beware of size! This might negatively affect performance of application
+  - Signature is `hash(base64urlEncode(data) + base64urlEncode(payload))`
+  - Put all three together, connecting with `.` dot.
+  - JWT sent as header: `Authorization: Bearer <token>`
+
+  Then *authentication* server and *application* know about the *secret key* they apply together with hashing function. So if someone who got the token, changes payload to replace user ID or permissions and try to "pretend" valid, hash calculation will fail and thus application system knows it should not trust that data.
+
+  Advantage is that authentication and application systems only need to know the secret, and then can calculate hash, and then decide if should trust token or not.
+
+  Read https://medium.com/vandium-software/5-easy-steps-to-understanding-json-web-tokens-jwt-1164c0adfcec to unerstand the explanation.
+
+  > Purpose of JWT is **not** to hide or obscure data, as it is **encoded**, **signed**, but **not encrypted**.
