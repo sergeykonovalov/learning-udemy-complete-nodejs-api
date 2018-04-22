@@ -165,3 +165,9 @@ To use encrtypton algorithms, we need to install module:
 ```shell
 npm install crypto-js@3.1.6 --save
 ```
+
+Crypto-JS used for learning purposes, while in production we will be using another module:
+
+```shell
+npm install jsonwebtoken@7.1.9 --save
+```
