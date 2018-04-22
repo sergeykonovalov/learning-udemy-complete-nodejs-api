@@ -199,4 +199,4 @@ npm install jsonwebtoken@7.1.9 --save
 
   ### Generating Tokens and Setting Headers
 
-  Note we will use model methods (`User`) and instance methods (`user.generateAuthToken`).
+  Note we will use model methods (`User.findByToken` - custsom method we will create later) and instance methods (`user.generateAuthToken`).
