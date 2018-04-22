@@ -192,3 +192,7 @@ npm install jsonwebtoken@7.1.9 --save
   Read https://medium.com/vandium-software/5-easy-steps-to-understanding-json-web-tokens-jwt-1164c0adfcec to unerstand the explanation.
 
   > Purpose of JWT is **not** to hide or obscure data, as it is **encoded**, **signed**, but **not encrypted**.
+
+  Note that `jwt.verify()` will throw an exception "JsonWebTokenError: invalid signature" if token is not valid.
+
+  > QUESTION: What if secret key compromised? What are next steps? Invalidate all tokens? 
