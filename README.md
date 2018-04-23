@@ -210,3 +210,10 @@ npm install jsonwebtoken@7.1.9 --save
   ```shell
   npm install bcryptjs@2.3.0 --save
   ```
+  
+  We will be hashing all passwords before we save them.
+  Once we receive password from user, we use compare method to check if provided password is valid, by comparing it with salted hash.
+  
+  > QUESTION: How does it know what was the salt?
+  
+  To use hashing we will explore and use Mongoose middleware.
