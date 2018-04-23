@@ -46,15 +46,16 @@ app.get('/todos', (req, res) => {
 app.get('/todos/:id', (req, res) => {
   let todoId = req.params.id;
   if (!ObjectID.isValid(todoId)) {
-    res.status(400).send({ responseText: `Bad ID ${todoId} provided`});
+    res.status(400).send();
   }
   Todo.findById(todoId).then((todo) => {
     if (!todo) {
-      res.status(404).send({ responseCode: 404, responseText: 'Not found'})
-    };
+      res.status(404).send();
+    }
     res.send({ todo, responseCode: 200, responseText: 'Ok' });
-  }, (e) => {
-    res.status(400).send(e);
+    }).catch((error) => {
+        // console.log('=== APP Error ===\n', error);
+      res.status(400).send();
   });
 });
 
