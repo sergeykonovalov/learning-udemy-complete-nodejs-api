@@ -217,3 +217,8 @@ npm install jsonwebtoken@7.1.9 --save
   > QUESTION: How does it know what was the salt?
   
   To use hashing we will explore and use Mongoose middleware.
+  
+  > More information about [Mongoose middleware](http://mongoosejs.com/docs/middleware.html).
+  
+  It helps to run some code when certain event happens.
+  In our case we want to inject into moment before the update.

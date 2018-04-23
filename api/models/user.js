@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
+const bcrypt = require('bcryptjs');
 
 let UserSchema = new mongoose.Schema({
   email: {
@@ -85,6 +86,24 @@ UserSchema.statics.findByToken = function (token) {
       'tokens.access': 'auth'
   });
 };
+
+UserSchema.pre('save', function (next) {
+  // we use function keyword here, as we want to bind it
+  let user = this;
+  // check if 'password' property was modified to avoid hashing of already hashed
+  if (user.isModified('password')) {
+    // will hash password here
+      bcrypt.genSalt(10, user.password, (err, salt) => {
+        bcrypt.hash(user.password, salt, (err, hash) => {
+          user.password = hash;
+          next();
+        })
+      })
+  } else {
+    next();
+  }
+
+});
 
 let User = mongoose.model('User', UserSchema);
 
