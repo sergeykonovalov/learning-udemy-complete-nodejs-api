@@ -185,40 +185,40 @@ npm install jsonwebtoken@7.1.9 --save
   - Put all three together, connecting with `.` dot.
   - JWT sent as header: `Authorization: Bearer <token>`
 
-  Then *authentication* server and *application* know about the *secret key* they apply together with hashing function. So if someone who got the token, changes payload to replace user ID or permissions and try to "pretend" valid, hash calculation will fail and thus application system knows it should not trust that data.
+Then *authentication* server and *application* know about the *secret key* they apply together with hashing function. So if someone who got the token, changes payload to replace user ID or permissions and try to "pretend" valid, hash calculation will fail and thus application system knows it should not trust that data.
 
-  Advantage is that authentication and application systems only need to know the secret, and then can calculate hash, and then decide if should trust token or not.
+Advantage is that authentication and application systems only need to know the secret, and then can calculate hash, and then decide if should trust token or not.
 
-  Read https://medium.com/vandium-software/5-easy-steps-to-understanding-json-web-tokens-jwt-1164c0adfcec to unerstand the explanation.
+Read https://medium.com/vandium-software/5-easy-steps-to-understanding-json-web-tokens-jwt-1164c0adfcec to unerstand the explanation.
 
-  > Purpose of JWT is **not** to hide or obscure data, as it is **encoded**, **signed**, but **not encrypted**.
+> Purpose of JWT is **not** to hide or obscure data, as it is **encoded**, **signed**, but **not encrypted**.
 
-  Note that `jwt.verify()` will throw an exception "JsonWebTokenError: invalid signature" if token is not valid.
+Note that `jwt.verify()` will throw an exception "JsonWebTokenError: invalid signature" if token is not valid.
 
-  > QUESTION: What if secret key compromised? What are next steps? Invalidate all tokens? 
+> QUESTION: What if secret key compromised? What are next steps? Invalidate all tokens? 
 
-  ### Generating Tokens and Setting Headers
+### Generating Tokens and Setting Headers
 
-  Note we will use model methods (`User.findByToken` - custsom method we will create later) and instance methods (`user.generateAuthToken`).
+Note we will use model methods (`User.findByToken` - custsom method we will create later) and instance methods (`user.generateAuthToken`).
 
-  > Convention to have prefix X for headers, which are out of HTTP and you use for your own purposes.
+> Convention to have prefix X for headers, which are out of HTTP and you use for your own purposes.
   
-  ### Hashing of Passwords
-  
-  Install BCrypt module:
-  
-  ```shell
-  npm install bcryptjs@2.3.0 --save
-  ```
-  
-  We will be hashing all passwords before we save them.
-  Once we receive password from user, we use compare method to check if provided password is valid, by comparing it with salted hash.
-  
-  > QUESTION: How does it know what was the salt?
-  
-  To use hashing we will explore and use Mongoose middleware.
-  
-  > More information about [Mongoose middleware](http://mongoosejs.com/docs/middleware.html).
-  
-  It helps to run some code when certain event happens.
-  In our case we want to inject into moment before the update.
+### Hashing of Passwords
+
+Install BCrypt module:
+
+```shell
+npm install bcryptjs@2.3.0 --save
+```
+
+We will be hashing all passwords before we save them.
+Once we receive password from user, we use compare method to check if provided password is valid, by comparing it with salted hash.
+
+> QUESTION: How does it know what was the salt?
+
+To use hashing we will explore and use Mongoose middleware.
+
+> More information about [Mongoose middleware](http://mongoosejs.com/docs/middleware.html).
+
+It helps to run some code when certain event happens.
+In our case we want to inject into moment before the update.
