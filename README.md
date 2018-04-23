@@ -202,3 +202,11 @@ npm install jsonwebtoken@7.1.9 --save
   Note we will use model methods (`User.findByToken` - custsom method we will create later) and instance methods (`user.generateAuthToken`).
 
   > Convention to have prefix X for headers, which are out of HTTP and you use for your own purposes.
+  
+  ### Hashing of Passwords
+  
+  Install BCrypt module:
+  
+  ```shell
+  npm install bcryptjs@2.3.0 --save
+  ```
