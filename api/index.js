@@ -120,6 +120,19 @@ app.post('/users', (req, res) => {
   });
 });
 
+app.get('/users/me', (req, res) => {
+  let token = req.header('x-auth');
+  User.findByToken(token).then((user) => {
+    console.log('=== APP - Received User ===', user);
+    if (!user) {
+      return Promise.reject();
+    }
+    res.send(user);
+  }).catch((e) => {
+    res.status(401).send(e);
+  });
+});
+
 app.listen(process.env.PORT = 3000, () => {
     console.log(`Express server application started on port ${process.env.PORT}`);
 });
