@@ -1,6 +1,4 @@
 const { SHA256 } = require('crypto-js');
-const bcrypt = require('bcryptjs');
-
 let message = 'I am user number 4';
 let hash = SHA256(message).toString();
 console.log(`Message: ${message}`);
@@ -24,14 +22,4 @@ if (resultHash === token.hash) {
     console.log('data was not changed');
 } else {
     console.log('do not trust this data');
-};
-
-let password = '123abc!';
-
-// generate salt (the higher the first argument, the longer it will take to generate - intentionally)
-bcrypt.genSalt(10, (err, salt) => {
-    // hashing
-    bcrypt.hash(password, salt, (err, hash) => {
-        console.log(hash);
-    });
-});
+}
