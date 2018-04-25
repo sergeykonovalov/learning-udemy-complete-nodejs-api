@@ -222,3 +222,6 @@ To use hashing we will explore and use Mongoose middleware.
 
 It helps to run some code when certain event happens.
 In our case we want to inject into moment before the update.
+
+> QUESTION: Why do we make 'let User = this;' in statics methods?
+> QUESTION: What is use case to return Promise.reject()?
