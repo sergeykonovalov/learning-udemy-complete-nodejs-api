@@ -87,6 +87,27 @@ UserSchema.statics.findByToken = function (token) {
   });
 };
 
+UserSchema.statics.findByCredentials = function(email, password) {
+    let User = this;
+    return User.findOne({ email }).then((user) => {
+        if (!user) {
+            return Promise.reject();
+        }
+        return new Promise((resolve, reject) => {
+            bcrypt.compare(password, user.password, function(err, res) {
+                if (res) {
+                    resolve(user); // QUESTION: Why do we return user here, not res?
+                    // ANSWER: Because thus we resolve whole .findByCredentials promise and return user model
+                    // QUESTION: Is user available in the Promise scope? (yes)
+                    // QUESTION: Why if (res) { resolve } **not** same as if (err) { reject }? (because err can be empty?)
+                } else {
+                    reject();
+                };
+            });
+        });
+    }).catch((e) => Promise.reject(e));
+};
+
 UserSchema.pre('save', function (next) {
   // we use function keyword here, as we want to bind it
   let user = this;

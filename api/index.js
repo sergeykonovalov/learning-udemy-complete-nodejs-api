@@ -126,6 +126,19 @@ app.get('/users/me', authenticate, (req, res) => {
   res.send(req.user);
 });
 
+app.post('/users/login', (req, res) => {
+    let token = req.header['x-auth'];
+    let requestBody = _.pick(req.body, ['email', 'password']);
+    User.findByCredentials(requestBody.email, requestBody.password).then((user) => {
+        user.generateAuthToken().then((token) => {
+            res.header('x-auth', token).send(user);
+        });
+    }).catch((e) => {
+        // when user not found
+        res.status(400).send();
+    });
+});
+
 app.listen(process.env.PORT = 3000, () => {
     console.log(`Express server application started on port ${process.env.PORT}`);
 });
