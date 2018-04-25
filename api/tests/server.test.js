@@ -174,6 +174,9 @@ describe('POST /users/me', () => {
         request(app)
             .get('/users/me')
             .expect(401)
+            .expect((res) => {
+                expect(res.body).toEqual({});
+            })
             .end(done);
     });
 });
