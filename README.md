@@ -225,3 +225,5 @@ In our case we want to inject into moment before the update.
 
 > QUESTION: Why do we make 'let User = this;' in statics methods?
 > QUESTION: What is use case to return Promise.reject()?
+
+> Note: `supertest` function `.end()` is a callback to "perform request and invoke `function(err, res)`". Alternative is to pass `done` function of `mocha`. More on that on [official documentation](https://github.com/visionmedia/supertest).
