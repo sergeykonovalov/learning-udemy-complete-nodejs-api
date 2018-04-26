@@ -13,6 +13,15 @@ beforeEach(populateTodos);
 
 describe('POST /todos', () => {
     it('should create a new todo', (done) => {
+        /*
+        - Sends sample text to app route
+        - Expects to get 200
+        - Expects that response body text property to be same as sample text
+        - In the end try with a promise  to find all todos
+            - then expect number to be +1
+            - and last in array to have same text as sample
+        - If something fails, then handle in catch
+         */
         let text = 'one test todo text';
         request(app)
             .post('/todos')

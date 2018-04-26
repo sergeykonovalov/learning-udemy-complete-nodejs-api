@@ -227,3 +227,6 @@ In our case we want to inject into moment before the update.
 > QUESTION: What is use case to return Promise.reject()?
 
 > Note: `supertest` function `.end()` is a callback to "perform request and invoke `function(err, res)`". Alternative is to pass `done` function of `mocha`. More on that on [official documentation](https://github.com/visionmedia/supertest).
+
+> TODO: Still not clear exact difference between ((res) => {}, (rej) => {}) and .catch((e) => {}) in Promise.
+> TODO: Still not clear why .end() can have either just "done" or (err, res) function.
