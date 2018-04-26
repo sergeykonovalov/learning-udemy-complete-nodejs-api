@@ -261,6 +261,9 @@ describe('POST /users/login', () => {
                 password: '123cba!@#'
             })
             .expect(400)
+            .expect((res) => {
+                expect(res.headers['x-auth']).toNotExist();
+            })
             .end(done);
     });
 });
