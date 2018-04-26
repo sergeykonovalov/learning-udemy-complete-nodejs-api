@@ -72,7 +72,7 @@ UserSchema.methods.removeToken = function (token) {
                 token: token // remove where tokens.token = token from function argument
             }
         }
-    })
+    });
 };
 
 // Define model method, not instance method
