@@ -127,7 +127,7 @@ app.get('/users/me', authenticate, (req, res) => {
 });
 
 app.post('/users/login', (req, res) => {
-    let token = req.header['x-auth'];
+    let requestToken = req.header['x-auth'];
     let requestBody = _.pick(req.body, ['email', 'password']);
     User.findByCredentials(requestBody.email, requestBody.password).then((user) => {
         user.generateAuthToken().then((token) => {
