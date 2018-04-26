@@ -203,7 +203,7 @@ describe('POST /users/me', () => {
                    expect(user).toExist();
                    expect(user.password).toNotBe(password);
                    done();
-                });
+                }).catch((e) => done(e));
             });
     });
     it('should return validation error if request invalid', (done) => {
