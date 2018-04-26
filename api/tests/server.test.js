@@ -254,6 +254,13 @@ describe('POST /users/login', () => {
             });
     });
     it('should reject invalid login', (done) => {
-
+        request(app)
+            .post('/users/login')
+            .send({
+                email: 'some@nonexisten.com',
+                password: '123cba!@#'
+            })
+            .expect(400)
+            .end(done);
     });
 });
