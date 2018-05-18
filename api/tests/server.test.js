@@ -30,6 +30,7 @@ describe('POST /todos', () => {
         let text = 'one test todo text';
         request(app)
             .post('/todos')
+            .set('x-auth', 'a1b2c3d4e5f6') // set custom header
             .send({ text })
             .expect(200)
             .expect((res) => {
