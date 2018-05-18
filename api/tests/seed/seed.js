@@ -27,15 +27,18 @@ const users = [
 
 let todos = [{
     _id: new ObjectID(),
-    text: 'first test todo'
+    text: 'first test todo',
+    _creator: userOneId
 }, {
     _id: new ObjectID(),
     text: 'second test todo',
     completed: true,
-    completedAt: 333 // random number (actually a timestamp)
+    completedAt: 333, // random number (actually a timestamp)
+    _creator: userOneId
 }, {
     _id: new ObjectID(),
-    text: 'third test todo'
+    text: 'third test todo',
+    _creator: userOneId
 }];
 
 const populateTodos = (done) => {

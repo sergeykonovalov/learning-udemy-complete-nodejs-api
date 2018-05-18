@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 //     console.log(error);
 // });
 
-app.post('/todos', (req, res) => {
+app.post('/todos', authenticate, (req, res) => {
     let newTodo = new Todo({
         text: req.body.text,
         completed: true
@@ -35,7 +35,7 @@ app.post('/todos', (req, res) => {
     });
 });
 
-app.get('/todos', (req, res) => {
+app.get('/todos', authenticate, (req, res) => {
     Todo.find().then((todos) => {
         res.send({ todos, responseCode: 200, responseText: "Ok" });
     }, (e) => {
