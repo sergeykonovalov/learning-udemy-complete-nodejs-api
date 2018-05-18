@@ -230,3 +230,25 @@ In our case we want to inject into moment before the update.
 
 > TODO: Still not clear exact difference between ((res) => {}, (rej) => {}) and .catch((e) => {}) in Promise.
 > TODO: Still not clear why .end() can have either just "done" or (err, res) function.
+
+## Advanced Postman
+
+User "Test" section to get data and set environmental variables:
+
+```javascript
+var token = postman.getResponseHeader('x-auth');
+postman.setEnviromentVariable('x-auth', token);
+```
+
+Now one can refer this in headers or requests with `{{x-auth}}`.
+
+Or use response body:
+
+```javascript
+var body = JSON.parse(responseBody);
+postman.setEnviromentVariable('response-body', body);
+var someId = body.someValueId;
+postman.setEnviromentVariable('someId', someId);
+```
+
+And then even use in URL: `{{url}}/something/{{comeId}}`.
